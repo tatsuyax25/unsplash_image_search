@@ -1,8 +1,18 @@
 import React from "react";
+import { Form } from "react-bootstrap";
 import './index.css';
 
 const App = () => {
-  return <div>Welcome to Unsplash Image Search</div>
+  return (
+    <div className="container">
+      <h1 className="title">Image Search</h1>
+      <div className="search-section">
+        <Form>
+          <Form.Control type="search" placeholder="Type something to search..." className="search-input" />
+        </Form>
+      </div>  
+    </div>
+  )
 };
 
 export default App;
