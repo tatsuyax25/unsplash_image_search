@@ -26,6 +26,7 @@ const App = () => {
 const handleSearch = (e) => {
     e.preventDefault();
     console.log(searchInput.current.value);
+    fetchImages();
   };
 
   const handleSelection = (selection) => {
