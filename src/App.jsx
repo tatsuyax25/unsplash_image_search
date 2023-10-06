@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { Form } from "react-bootstrap";
 import './index.css';
 
+const API_URL = 'https://api.unsplash.com/search/photos';
 const App = () => {
   const searchInput = useRef(null);
 
