@@ -57,6 +57,16 @@ const handleSearch = (e) => {
         <div onClick={() => handleSelection('cats')}>Cats</div>
         <div onClick={() => handleSelection('shoes')}>Shoes</div>
       </div>
+      <div className='images'>
+      {images.map((image) => (
+        <img
+          key={image.id}
+          src={image.urls.small}
+          alt={image.alt_description}
+          className='image'
+        />
+      ))}
+      </div>
     </div>
   )
 };
