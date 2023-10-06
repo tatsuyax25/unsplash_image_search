@@ -8,7 +8,11 @@ const App = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     console.log(searchInput.current.value);
-  }
+  };
+
+  const handleSelection = (selection) => {
+    searchInput.current.value = selection;
+  };
 
   return (
     <div className="container">
@@ -17,7 +21,13 @@ const App = () => {
         <Form onSubmit={handleSearch}>
           <Form.Control type="search" placeholder="Type something to search..." className="search-input" ref={searchInput} />
         </Form>
-      </div>  
+      </div>
+      <div className="filters">
+        <div onClick={() => handleSelection('nature')}>Nature</div>
+        <div onClick={() => handleSelection('bird')}>Birds</div>
+        <div onClick={() => handleSelection('cats')}>Cats</div>
+        <div onClick={() => handleSelection('shoes')}>Shoes</div>
+      </div>
     </div>
   )
 };
