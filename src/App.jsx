@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import './index.css';
 
@@ -12,13 +12,10 @@ const App = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
 
-  useEffect(() => {
-    fetchImages();
-  }, [page]);
-
-  const fetchImages = async () => {
+  const fetchImages = useCallback(async () => {
     try {
-      const { data } = await axios.get(
+      if (searchInput.current.value) {
+        const { data } = await axios.get(
         `${API_URL}?query=${
           searchInput.current.value
         }&page=${page}&per_page=${IMAGES_PER_PAGE}&client_id=${
@@ -28,10 +25,15 @@ const App = () => {
       console.log('data', data);
       setImages(data.results);
       setTotalPages(data.total_pages);
+      }
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [page]);
+
+  useEffect(() => {
+    fetchImages();
+  }, [fetchImages, page]);
 
   const resetSearch = () => {
     setPage(1);
