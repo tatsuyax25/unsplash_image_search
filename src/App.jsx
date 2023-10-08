@@ -33,15 +33,15 @@ const App = () => {
 
   useEffect(() => {
     fetchImages();
-  }, [fetchImages, page]);
+  }, [fetchImages]);
 
   const resetSearch = () => {
     setPage(1);
     fetchImages();
   };
 
-  const handleSearch = (event) => {
-    event.preventDefault();
+  const handleSearch = (e) => {
+    e.preventDefault();
     console.log(searchInput.current.value);
     resetSearch();
   };
